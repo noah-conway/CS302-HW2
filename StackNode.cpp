@@ -11,13 +11,11 @@
 template <typename DataType>
 StackNode<DataType>::StackNode()
 {
-	std::cout << "stacknode def ctor" << std::endl;
 }
 
 template <typename DataType>
 StackNode<DataType>::StackNode(const DataType& nodeData, StackNode* nextPtr) : dataItem(nodeData), next(nextPtr)
 {
-	std::cout << "stacknode p-ctor" << std::endl;
 }
 
 
