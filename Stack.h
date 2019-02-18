@@ -22,8 +22,8 @@ class Stack {
 
     virtual ~Stack();
 
-    virtual void push(const DataType& newDataItem) = 0;// throw (logic_error) = 0;
-    virtual DataType pop() = 0;// throw (logic_error) = 0;
+    virtual void push(const DataType& newDataItem) throw (logic_error) = 0;
+    virtual DataType pop() throw (logic_error) = 0;
 
     virtual void clear() = 0;
 

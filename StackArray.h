@@ -24,8 +24,8 @@ class StackArray : public Stack<DataType> {
     StackArray& operator=(const StackArray& other);
     ~StackArray();
 
-    void push(const DataType& newDataItem);// throw (logic_error);
-    DataType pop();// throw (logic_error);
+    void push(const DataType& newDataItem) throw (logic_error);
+    DataType pop() throw (logic_error);
 
     void clear();
 

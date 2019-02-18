@@ -52,13 +52,13 @@ StackArray<DataType> & StackArray<DataType>::operator = (const StackArray& other
 
 
 template <typename DataType>
-void StackArray<DataType>::push(const DataType& newDataItem)// throw (logic_error)
+void StackArray<DataType>::push(const DataType& newDataItem) throw (logic_error)
 {
 
 	if(isFull())
 	{
-		std::cout << "error" << std::endl;
-//		throw (logic_error);
+		std::string message = "Stack is full, cannot add new data";
+		throw (logic_error (message));
 	} else {
 
 		top++;
@@ -69,14 +69,15 @@ void StackArray<DataType>::push(const DataType& newDataItem)// throw (logic_erro
 }
 
 template <typename DataType>
-DataType StackArray<DataType>::pop()// throw (logic_error)
+DataType StackArray<DataType>::pop() throw (logic_error)
 {
 	
 	DataType deleteDataItem;
 	
 	if(top < 0)
 	{
-		std::cout << "error" << std::endl;
+		std::string message = "Stack is empty, cannot delete data";
+		throw (logic_error(message));
 	} else {
 		deleteDataItem = *(dataItems + top);
 		top--;	
