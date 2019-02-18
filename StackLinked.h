@@ -26,8 +26,8 @@ class StackLinked : public Stack<DataType> {
     StackLinked& operator=(const StackLinked& other);
     ~StackLinked();
 
-    void push(const DataType& newDataItem);// throw (logic_error);
-    DataType pop();// throw (logic_error);
+    void push(const DataType& newDataItem) throw (logic_error);
+    DataType pop() throw (logic_error);
 
     void clear();
 
