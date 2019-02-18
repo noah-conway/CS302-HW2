@@ -6,8 +6,8 @@
 //
 //--------------------------------------------------------------------
 
-#ifndef STACKARRAY_H
-#define STACKARRAY_H
+#ifndef STACKLINKED_H
+#define STACKLINKED_H
 
 #include <stdexcept>
 #include <iostream>
@@ -15,6 +15,7 @@
 using namespace std;
 
 #include "Stack.h"
+#include "StackNode.cpp"
 
 template <typename DataType>
 class StackLinked : public Stack<DataType> {
@@ -37,7 +38,7 @@ class StackLinked : public Stack<DataType> {
     void showStructure() const;
 
   private:
-
+/*
     class StackNode {
       public:
 	StackNode(const DataType& nodeData, StackNode* nextPtr);
@@ -45,8 +46,8 @@ class StackLinked : public Stack<DataType> {
 	DataType dataItem;
 	StackNode* next;
     };
-
-    StackNode* top;
+*/
+    StackNode<DataType>* top;
 };
 
 #endif		//#ifndef STACKARRAY_H

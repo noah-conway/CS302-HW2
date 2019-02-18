@@ -6,9 +6,17 @@
 //
 //--------------------------------------------------------------------
 
-#include "Stack.h"
 #include "StackLinked.h"
 
+//-------------------------------------------------------------
+//	StackNode
+//-------------------------------------------------------------
+/*
+template <typename DataType>
+StackLinked<DataType>::StackNode::StackNode(const DataType& nodeData, StackNode* nextptr)
+{
+}
+*/
 //-------------------------------------------------------------
 //	Constructors
 //-------------------------------------------------------------
@@ -20,6 +28,7 @@ StackLinked<DataType>::StackLinked(int maxNumber) : top(NULL)
 template <typename DataType>
 StackLinked<DataType>::StackLinked(const StackLinked& other)
 {
+	*this = other;
 }
 
 template <typename DataType>
@@ -35,6 +44,13 @@ StackLinked<DataType>::~StackLinked()
 template <typename DataType>
 StackLinked<DataType> & StackLinked<DataType>::operator=(const StackLinked& other)
 {
+	StackNode<DataType> * otherCurPtr = other.top;
+	while(otherCurPtr != NULL) 
+	{
+		push(otherCurPtr->getData());
+		otherCurPtr = otherCurPtr->getNext();
+	}	
+	
 	return *this;
 }
 
@@ -51,7 +67,8 @@ void StackLinked<DataType>::push(const DataType& newDataItem) throw (logic_error
 		std::string message = "Stack is full, cannot add new data";
 		throw(logic_error(message));	
 	} else {
-		DataType * toAddPtr = new StackNode(newDataItem, top);
+
+		StackNode<DataType> * toAddPtr = new StackNode<DataType>(newDataItem, top);
 		top = toAddPtr;
 		toAddPtr = NULL;
 	}	
@@ -66,9 +83,12 @@ DataType StackLinked<DataType>::pop() throw (logic_error)
 		throw (logic_error(message));
 	} else {
 
-		DataType * toDelPtr = top; 
-		DataType dataToDel = dataToDel->nodeData;
+		StackNode<DataType> * toDelPtr; 
+		toDelPtr = top;
+		top = top->getNext();
+		DataType dataToDel = toDelPtr->getDataItem();
 		delete toDelPtr;
+
 		return dataToDel;
 	}
 }
@@ -76,11 +96,10 @@ DataType StackLinked<DataType>::pop() throw (logic_error)
 template <typename DataType>
 void StackLinked<DataType>::clear()
 {
-	while(!isEmpty()) 
+	while(!isEmpty())
 	{
 		pop();
 	}
-	
 }
 
 template <typename DataType>
@@ -98,5 +117,12 @@ bool StackLinked<DataType>::isFull() const
 template <typename DataType>
 void StackLinked<DataType>::showStructure() const
 {
+	StackNode<DataType> * curPtr = top;
+	while(curPtr != NULL)
+	{
+		std::cout << curPtr->getDataItem() << " ";
+		curPtr = curPtr->getNext();
+	}
+	std::cout << std::endl;
 }
 
