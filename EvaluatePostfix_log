@@ -1,0 +1,23 @@
+Noah Conway
+CS302 Homework 2
+2-19-2019
+
+for infix expression: 8*9+(6+4-3)
+Enter a postfix expression to be evaluated: 89*643-++
+Result: 79
+
+for infix expression: 5/(2+3)*6
+Enter a postfix expression to be evaluated: 523+/6*
+Result: 6
+
+for infix expression: 8*(9/(2-3/4))
+Enter a postfix expression to be evaluated: 89234/-/*
+Result: 57.6
+
+for infix expression: 8/9/6/(4/5)/3
+Enter a postfix expression to be evaluated: 89/6/45//3/
+Result: 0.0617284
+
+for infix expression: 4*4*5*5*6+6
+Enter a postfix expression to be evaluated: 44*5*5*6*6+
+Result: 2406
